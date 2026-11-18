@@ -1,0 +1,19 @@
+# Configuración del Worker. OpenCode debe reemplazar <REEMPLAZAR_CON_DATABASE_ID>
+# con el database_id que devuelve `npx wrangler d1 create funeraria-db` (ver AGENTS.md).
+name = "funeraria-app"
+main = "src/index.ts"
+compatibility_date = "2025-09-01"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+run_worker_first = ["/api/*"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "funeraria-db"
+database_id = "<REEMPLAZAR_CON_DATABASE_ID>"
+
+[observability]
+enabled = true
